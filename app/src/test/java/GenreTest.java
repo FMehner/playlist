@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GenreTest {
 
-    /*
+
     @Test
     public void testValues() {
         assertEquals("Pop", Genre.POP.getDescription(), "Description of POP must be Pop");
@@ -25,7 +25,7 @@ public class GenreTest {
         assertEquals("[H]", Genre.HIP_HOP.getSymbol(), "Symbol of HIP_HOP must be [H]");
         assertEquals("[E]", Genre.ELECTRONIC.getSymbol(), "Symbol of ELECTRONIC must be [E]");
     }
-    */
+
 
     /*
     @Test
