@@ -36,7 +36,7 @@ public class PlaylistTest {
     }
 
 
-    /*
+
     @Test
     public void testAdd() {
 
@@ -68,7 +68,7 @@ public class PlaylistTest {
                 "must return false when song equal to s1 is added again");
 
     }
-    */
+
 
     /*
     @Test

@@ -106,8 +106,8 @@ public class Song {
         return title + " - "
                 + artist + " ("
                 + getFormattedDuration() + ") ["
-                + genre + " ["
-                + genre.getSymbol() + "]] Plays: "
+                + genre + " "
+                + genre.getSymbol() + "] Plays: "
                 + playCount;
     }
 
