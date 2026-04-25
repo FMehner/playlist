@@ -1,6 +1,6 @@
 public class Song {
 
-    //Attributes
+    //Attributes Declaration
     private final String title;
     private final String artist;
     private final int durationSeconds;

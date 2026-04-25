@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaylistTest {
 
-    /*
+
     private Song s1;
     private Song s2;
     private Song s3;
@@ -34,7 +34,7 @@ public class PlaylistTest {
                 "blank name is not allowed");
 
     }
-    */
+
 
     /*
     @Test
