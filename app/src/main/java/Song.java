@@ -61,6 +61,9 @@ public class Song {
 
     //Flache Kopie: Attribute werden kopiert, aber zeigen noch auf das gleiche Objekt
     public Song(Song other){
+        if (other == null){
+            throw new IllegalArgumentException("null song is not allowed");
+        }
         this.title = other.title;
         this.artist = other.artist;
         this.durationSeconds = other.durationSeconds;
@@ -69,14 +72,13 @@ public class Song {
         this.nextSong = other.nextSong;
     }
 
-    public void setNextSong(Song nextSong){
-        this.nextSong = nextSong;
-    }
+
+    public void setNextSong(Song nextSong){this.nextSong = nextSong;}
 
     public void play(){
         playCount++;
     }
-
+    /*
     public String getFormattedDuration(){
 
     }
@@ -84,6 +86,6 @@ public class Song {
     public int getEnergy(){
 
     }
-
+    */
 
 }

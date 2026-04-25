@@ -46,8 +46,8 @@ public class SongTest {
 
     }
 
-    */
-    /*
+
+
     @Test
     public void testCopyConstructor() {
 
@@ -56,7 +56,7 @@ public class SongTest {
         song.setNextSong(anotherSong);
 
         // Play the original a few times to test playCount copy
-        song.play();
+        song .play();
         song.play();
 
         Song copy = new Song(song);
