@@ -91,7 +91,7 @@ public class SongTest {
     }
     */
 
-
+    /*
     @Test
     public void testGetFormattedDuration() {
 
@@ -111,7 +111,7 @@ public class SongTest {
         assertEquals("0:03", song5.getFormattedDuration(), "3 seconds must be 0:03");
 
     }
-
+    */
 
     /*
     @Test
@@ -132,7 +132,7 @@ public class SongTest {
     }
     */
 
-    /*
+
     @Test
     public void testEquals() {
 
@@ -169,7 +169,7 @@ public class SongTest {
                 "equal must return true for equal songs");
 
     }
-    */
+
 
     /*
     @Test

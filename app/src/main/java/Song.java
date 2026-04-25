@@ -56,6 +56,9 @@ public class Song {
     public Genre getGenre(){return genre;}
     public int getPlayCount(){return playCount;}
     public Song getNextSong(){return nextSong;}
+    public int getEnergy(){
+        return genre.getEnergyForDuration(durationSeconds);
+    }
 
 
 
@@ -83,12 +86,22 @@ public class Song {
     public String getFormattedDuration(){
         int minutes = durationSeconds / 60;
         int seconds = durationSeconds % 60;
-        return String.format("%d:%02d", minutes, seconds);
+        return String.format("%d:%02d", minutes, seconds);// "d" für normale Zahlen; "02d" Zahl mit führender Null
     }
-    /*
-    public int getEnergy(){
 
+    @Override
+    public boolean equals(Object other){
+        if (this == other) return true; //Prüft, ob gleiches Objekt im Speicher
+        if (!(other instanceof Song)){ return false;} //Prüft ob other kein Song ist oder null ist
+
+        Song song = (Song) other;
+
+        return durationSeconds == song.durationSeconds
+                && title.equals(song.title)
+                && artist.equals(song.artist)
+                && genre == song.genre;
     }
-    */
+
+
 
 }
