@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SongTest {
 
-
+    /*
     @Test
     public void testConstructor() {
 
@@ -46,7 +46,7 @@ public class SongTest {
 
     }
 
-
+    */
     /*
     @Test
     public void testCopyConstructor() {

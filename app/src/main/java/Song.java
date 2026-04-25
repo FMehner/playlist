@@ -57,4 +57,33 @@ public class Song {
     public int getPlayCount(){return playCount;}
     public Song getNextSong(){return nextSong;}
 
+
+
+    //Flache Kopie: Attribute werden kopiert, aber zeigen noch auf das gleiche Objekt
+    public Song(Song other){
+        this.title = other.title;
+        this.artist = other.artist;
+        this.durationSeconds = other.durationSeconds;
+        this.genre = other.genre;
+        this.playCount = other.playCount;
+        this.nextSong = other.nextSong;
+    }
+
+    public void setNextSong(Song nextSong){
+        this.nextSong = nextSong;
+    }
+
+    public void play(){
+        playCount++;
+    }
+
+    public String getFormattedDuration(){
+
+    }
+
+    public int getEnergy(){
+
+    }
+
+
 }
