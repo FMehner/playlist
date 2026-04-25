@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SongTest {
 
-    /*
+
     @Test
     public void testConstructor() {
 
@@ -45,7 +45,7 @@ public class SongTest {
                 "null genre is not allowed");
 
     }
-    */
+
 
     /*
     @Test

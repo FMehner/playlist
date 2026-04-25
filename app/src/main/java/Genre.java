@@ -21,11 +21,9 @@ public enum Genre {
     public String getDescription(){
         return description;
     }
-
     public double getEnergyMultiplier(){
         return energyMultiplier;
     }
-
     public String getSymbol(){
         return symbol;
     }
