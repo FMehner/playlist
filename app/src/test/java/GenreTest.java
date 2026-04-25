@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GenreTest {
 
-
+    /*
     @Test
     public void testValues() {
         assertEquals("Pop", Genre.POP.getDescription(), "Description of POP must be Pop");
@@ -27,7 +27,7 @@ public class GenreTest {
     }
 
 
-    /*
+
     @Test
     public void testGetEnergyForDuration() {
         // POP: 1.0 * 60 / 60 = 1

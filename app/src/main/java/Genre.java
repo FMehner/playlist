@@ -29,6 +29,18 @@ public enum Genre {
     public String getSymbol(){
         return symbol;
     }
+
+    public int getEnergyForDuration(int durationSeconds){
+        //Exceptions for illegal input
+        if (durationSeconds == 0){
+            throw new IllegalArgumentException("duration 0 is not allowed");
+        }
+        if (durationSeconds < 0){
+            throw new IllegalArgumentException("negative duration is not allowed");
+        }
+
+        return (int) Math.round(durationSeconds * energyMultiplier / 60.0);
+    }
 }
 
 
