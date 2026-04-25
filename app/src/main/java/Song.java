@@ -72,17 +72,20 @@ public class Song {
         this.nextSong = other.nextSong;
     }
 
-
+    //Setter
     public void setNextSong(Song nextSong){this.nextSong = nextSong;}
+
 
     public void play(){
         playCount++;
     }
-    /*
+
     public String getFormattedDuration(){
-
+        int minutes = durationSeconds / 60;
+        int seconds = durationSeconds % 60;
+        return String.format("%d:%02d", minutes, seconds);
     }
-
+    /*
     public int getEnergy(){
 
     }
