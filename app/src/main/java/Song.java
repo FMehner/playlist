@@ -102,6 +102,14 @@ public class Song {
                 && genre == song.genre;
     }
 
+    public String toString(){
+        return title + " - "
+                + artist + " ("
+                + getFormattedDuration() + ") ["
+                + genre + " ["
+                + genre.getSymbol() + "]] Plays: "
+                + playCount;
+    }
 
 
 }

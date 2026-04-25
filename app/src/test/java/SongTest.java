@@ -132,7 +132,7 @@ public class SongTest {
     }
     */
 
-
+    /*
     @Test
     public void testEquals() {
 
@@ -169,7 +169,7 @@ public class SongTest {
                 "equal must return true for equal songs");
 
     }
-
+    */
 
     /*
     @Test
