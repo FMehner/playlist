@@ -1,3 +1,9 @@
+/**
+ * Repräsentiert die verfügbaren Musikgenres.
+ *
+ * <p>Jedes Genre besitzt eine Beschreibung, einen Energiemultiplikator
+ * zur Berechnung der Song-Energie sowie ein Symbol für die Darstellung.
+ */
 public enum Genre {
     POP("Pop", 1.0, "[P]"),
     ROCK("Rock", 1.5, "[R]"),
@@ -28,6 +34,14 @@ public enum Genre {
         return symbol;
     }
 
+    /**
+     * Berechnet die Energie eines Songs basierend auf seiner Dauer
+     * und dem Energiemultiplikator des Genres.
+     *
+     * @param durationSeconds Dauer des Songs in Sekunden, must be > {@code 0}
+     * @return die berechnete Energie als ganzzahliger Wert
+     * @throws IllegalArgumentException wenn {@code durationSeconds < = 0}
+     */
     public int getEnergyForDuration(int durationSeconds){
         //Exceptions for illegal input
         if (durationSeconds == 0){

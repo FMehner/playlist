@@ -32,11 +32,7 @@ public class MyMain {
 
 
 
-    /**
-     * Fügt der Playlist eine feste Menge an Beispiel-Songs zu Testzwecken hinzu.
-     *
-     * @param playlist
-     */
+    //Fügt der Playlist eine feste Menge an Beispiel-Songs zu Testzwecken hinzu
     private static void addExampleSongs(Playlist playlist) {
         playlist.add(new Song("Blinding Lights", "The Weeknd", 200, Genre.POP));
         playlist.add(new Song("Afterworkrapper", "Pöbel MC", 159, Genre.POP));
@@ -48,15 +44,7 @@ public class MyMain {
         //        System.out.println(description.getDescription());
     }
 
-    /**
-     * Fügt alle Parameter zu einem Song zusammen.
-     *
-     * @param playlist
-     * @param title
-     * @param artist
-     * @param durationSeconds
-     * @param genre
-     */
+    //Fügt alle Parameter zu einem Song zusammen.
     private static void addSong(Playlist playlist, String title, String artist, int durationSeconds, Genre genre) {
         Song song = new Song(title, artist, durationSeconds, genre);
 
@@ -105,19 +93,7 @@ public class MyMain {
         }
     }
 
-    /**
-     * Erstellt einen neuen Song; die nötigen Paramter
-     * <ul>
-     *     <li>Title</li>
-     *     <li>Artist</li>
-     *     <li>Duration</li>
-     *     <li>Genre</li>
-     * </ul>
-     * werden per Kommandozeile eingegeben.
-     *
-     * @param scanner
-     * @param playlist
-     */
+    //Liest neuen Song von der Konsole ein
     private static void readNewSong(Scanner scanner, Playlist playlist) {
 
         String title = "";
