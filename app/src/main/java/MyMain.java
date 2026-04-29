@@ -39,12 +39,9 @@ public class MyMain {
         playlist.add(new Song("TODO ROTO - CRRDR REMIX", "Nathy Peluso", 176, Genre.ELECTRONIC));
         playlist.add(new Song("Ce geste absent (Version acoustique", "Dominique A", 309, Genre.CLASSICAL));
         playlist.add(new Song("Pulse", "James Malikey", 221, Genre.CLASSICAL));
-
-        //        Genre description = Genre.POP;
-        //        System.out.println(description.getDescription());
     }
 
-    //Fügt alle Parameter zu einem Song zusammen.
+    //Fügt alle Parameter zu einem hinzufügbarem Song zusammen.
     private static void addSong(Playlist playlist, String title, String artist, int durationSeconds, Genre genre) {
         Song song = new Song(title, artist, durationSeconds, genre);
 
@@ -55,6 +52,16 @@ public class MyMain {
         }
 
 
+    }
+
+    private static void deleteSong(Playlist playlist, String title, String artist, int durationSeconds, Genre genre) {
+        Song song = new Song(title, artist, durationSeconds, genre);
+
+        if (playlist.delete(song)) {
+            System.out.printf("The song %s%n was deleted", (song.getTitle() + " - "+ song.getArtist()));
+        } else {
+            System.out.println("Song doesn't exists in playlist");
+        }
     }
 
     private static void listSongs(Playlist playlist) {
@@ -71,14 +78,14 @@ public class MyMain {
     }
 
     private static void printStats(Playlist playlist) {
-/*
+
     int totalSeconds = playlist.getTotalDuration();
     int minutes = totalSeconds / 60;
     int seconds = totalSeconds % 60;
     System.out.printf("Playlist: %s (%d songs)%n", playlist.getName(), playlist.getSize());
     System.out.printf("Total duration: %d:%02d%n", minutes, seconds);
     System.out.printf("Total energy: %d%n", playlist.getTotalEnergy());
-*/
+
     }
 
 
@@ -91,6 +98,57 @@ public class MyMain {
             System.out.printf(" %d: %s (%s)%n",
                     genre.ordinal(), genre.getDescription(), genre.getSymbol());
         }
+    }
+
+    //Löscht angegebenen Song aus Playlist
+    private static void removeSong(Scanner scanner, Playlist playlist){
+        String title = "";
+        while (title.isBlank()) {
+            System.out.print("Title: ");
+            title = scanner.nextLine();
+        }
+
+        String artist = "";
+        while (artist.isBlank()) {
+            System.out.print("Artist: ");
+            artist = scanner.nextLine();
+        }
+
+        int durationSeconds = 0;
+        do {
+            System.out.print("Duration (seconds): ");
+            try {
+                durationSeconds = Integer.parseInt(scanner.nextLine());
+                if (durationSeconds <= 0) {
+                    System.out.println("Duration must be greater than 0");
+                    durationSeconds = 0;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
+            }
+        } while (durationSeconds <= 0);
+
+        Genre selectedGenre = null;
+        do {
+            System.out.println("Choose a genre:");
+            printGenres();
+            System.out.print("Selection: ");
+            try {
+                int selection = Integer.parseInt(scanner.nextLine());
+
+                if (selection >= 0 && selection < Genre.values().length) {
+                    selectedGenre = Genre.values()[selection];
+                } else {
+                    System.out.println("Invalid selection");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
+            }
+
+        } while (selectedGenre == null);
+
+        deleteSong(playlist, title, artist, durationSeconds, selectedGenre);
     }
 
     //Liest neuen Song von der Konsole ein
@@ -188,7 +246,7 @@ public class MyMain {
 
         do {
 
-            System.out.println("(N)ew song, (L)ist, (P)lay all, (F)ilter by genre, (S)tats, (Q)uit");
+            System.out.println("(N)ew song, (L)ist, (P)lay all, (F)ilter by genre, (S)tats, (D)elete, (Q)uit");
             input = scanner.nextLine().toUpperCase();
 
             switch (input) {
@@ -211,6 +269,10 @@ public class MyMain {
 
                 case "S":
                     printStats(playlist);
+                    break;
+
+                case "D":
+                    removeSong(scanner, playlist);
                     break;
 
                 case "Q":

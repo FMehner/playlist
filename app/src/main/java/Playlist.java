@@ -61,15 +61,10 @@ public class Playlist {
         }
 
 
-        while(true){ //iteriert bis zum Listenende
+        while(current != null){ //iteriert bis zum Listenende
             if (current.equals(song)){ //wenn Song schon vorhanden
                 return false;
             }
-
-            if (current.getNextSong() == null){ //Listenende erreicht
-                break;
-            }
-
             current = current.getNextSong();
         }
         /*Neuer Song zeigt auf bisherigen Song und
@@ -97,15 +92,10 @@ public class Playlist {
         }
 
         Song current = firstSong;
-        while(true){ //iteriert bis zum Listenende
+        while(current != null){ //iteriert bis zum Listenende
             if (current.getGenre().equals(genre)){
                 return true;
             }
-
-            if (current.getNextSong() == null){ //Listenende erreicht
-                break;
-            }
-
             current = current.getNextSong();
         }
 
@@ -117,13 +107,8 @@ public class Playlist {
      */
     public void playAll(){
         Song current = firstSong;
-        while(true){ //iteriert bis zum Listenende
+        while(current != null){ //iteriert bis zum Listenende
             current.play();
-
-            if (current.getNextSong() == null){ //Listenende erreicht
-                break;
-            }
-
             current = current.getNextSong();
         }
     }
@@ -136,17 +121,21 @@ public class Playlist {
      */
     public void printPlaylist(){
         Song current = firstSong;
-        while(true){ //iteriert bis zum Listenende
+        while(current != null){ //iteriert bis zum Listenende
             System.out.println(current.toString());
-
-            if (current.getNextSong() == null){ //Listenende erreicht
-                break;
-            }
-
             current = current.getNextSong();
         }
     }
 
+    /**
+     * Gibt alle Songs der Playlist aus, die dem angegebenen Genre entsprechen.
+     *
+     * <p>Die Ausgabe erfolgt in der Konsole in der Reihenfolge der verketteten Liste.
+     * Es werden nur Songs berücksichtigt, deren Genre dem Parameter entspricht.
+     *
+     * @param genre das zu filternde Genre, must not be {@code null}
+     * @throws IllegalArgumentException wenn {@code genre} {@code null} ist
+     */
     public void printPlaylist(Genre genre){ //Ähnlicher Code wie in containsGenre()
         // avoids null genre
         if (genre == null){
@@ -154,22 +143,86 @@ public class Playlist {
         }
 
         Song current = firstSong;
-        while(true){ //iteriert bis zum Listenende
+        while(current != null){ //iteriert bis zum Listenende
             if (current.getGenre().equals(genre)){
                 System.out.println(current.toString());
             }
-
-            if (current.getNextSong() == null){ //Listenende erreicht
-                break;
-            }
-
             current = current.getNextSong();
         }
     }
 
-//    public int getTotalDuration(){}
-//
-//    public int getTotalEnergy(){}
+    /**
+     * Berechnet die Gesamtdauer aller Songs in der Playlist.
+     *
+     * @return die Summe der Dauer aller Songs in Sekunden;
+     *         {@code 0}, wenn die Playlist leer ist
+     */
+    public int getTotalDuration(){
+        Song current = firstSong;
+        int totalDuration = 0;
+
+        while(current != null){ //iteriert bis zum Listenende
+            totalDuration += current.getDurationSeconds();
+            current = current.getNextSong();
+        }
+        return totalDuration;
+    }
+
+    /**
+     * Berechnet die Gesamtenergie aller Songs in der Playlist.
+     *
+     * <p>Die Energie eines Songs wird über {@code Song.getEnergy()} bestimmt.
+     *
+     * @return die Summe der Energie aller Songs;
+     *         {@code 0}, wenn die Playlist leer ist
+     */
+    public int getTotalEnergy(){
+        Song current = firstSong;
+        int totalEnergy = 0;
+
+        while(current != null){ //iteriert bis zum Listenende
+            totalEnergy += current.getEnergy();
+            current = current.getNextSong();
+        }
+        return totalEnergy;
+    }
+    /**
+     * Entfernt den ersten Song aus der Playlist, der dem übergebenen Song entspricht.
+     *
+     * <p>Wird der Song gefunden, wird er aus der verketteten Liste entfernt und die Größe
+     * der Playlist entsprechend angepasst. Ist der Song nicht enthalten, bleibt die
+     * Playlist unverändert.
+     *
+     * @param song der zu entfernende Song, must not be {@code null}
+     * @return {@code true}, wenn ein Song entfernt wurde, sonst {@code false}
+     * @throws IllegalArgumentException wenn {@code song} {@code null} ist
+     */
+    public boolean delete(Song song){
+        if (song == null){
+            throw new IllegalArgumentException("null song is not allowed");
+        }
+
+        if (firstSong == null) return false;
+
+        //Sonderfall: Erstes Element löschen
+        if (firstSong.equals(song)){
+            firstSong = firstSong.getNextSong(); // = null
+            size--;
+            return true;
+        }
+
+        Song current = firstSong;
+
+        while (current.getNextSong() != null){
+            if (current.getNextSong().equals(song)){
+                current.setNextSong(current.getNextSong().getNextSong()); //Verschiebt Zeiger von A->B zu A->C, weil B gelöscht wird
+                size--;
+                return true;
+            }
+            current = current.getNextSong();
+        }
+        return false;
+    }
 
 
 }
