@@ -62,12 +62,12 @@ public class MyMain {
     }
 
     private static void playAll(Playlist playlist) {
-        // playlist.playAll();
-        // System.out.println("All songs played!");
+        playlist.playAll();
+        System.out.println("All songs played!");
     }
 
     private static void filterByGenre(Playlist playlist, Genre genre) {
-        // playlist.printPlaylist(genre);
+        playlist.printPlaylist(genre);
     }
 
     private static void printStats(Playlist playlist) {

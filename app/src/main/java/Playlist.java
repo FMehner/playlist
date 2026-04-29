@@ -147,8 +147,26 @@ public class Playlist {
         }
     }
 
-//    public void printPlaylist(Genre genre){}
-//
+    public void printPlaylist(Genre genre){ //Ähnlicher Code wie in containsGenre()
+        // avoids null genre
+        if (genre == null){
+            throw new IllegalArgumentException("null genre is not allowed");
+        }
+
+        Song current = firstSong;
+        while(true){ //iteriert bis zum Listenende
+            if (current.getGenre().equals(genre)){
+                System.out.println(current.toString());
+            }
+
+            if (current.getNextSong() == null){ //Listenende erreicht
+                break;
+            }
+
+            current = current.getNextSong();
+        }
+    }
+
 //    public int getTotalDuration(){}
 //
 //    public int getTotalEnergy(){}
