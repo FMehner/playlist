@@ -70,7 +70,7 @@ public class PlaylistTest {
     }
 
 
-    /*
+
     @Test
     public void testContainsGenre() {
 
@@ -89,9 +89,9 @@ public class PlaylistTest {
                 "null genre is not allowed");
 
     }
-    */
 
-    /*
+
+
     @Test
     public void testPlayAll() {
 
@@ -117,7 +117,7 @@ public class PlaylistTest {
         assertEquals(2, s3.getPlayCount(), "play count of s3 must be 2 after second playAll");
 
     }
-    */
+
 
     /*
     @Test

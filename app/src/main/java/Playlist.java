@@ -32,37 +32,84 @@ public class Playlist {
         }
 
         Song current = firstSong;
-        if (firstSong == null){
+        if (firstSong == null){ //wenn noch kein Song vorhanden (startet die Playlist)
             firstSong = song;
             size++;
             return true;
         }
 
 
-        while(true){
-            if (current.equals(song)){
+        while(true){ //iteriert bis zum Listenende
+            if (current.equals(song)){ //wenn Song schon vorhanden
                 return false;
             }
 
-            if (current.getNextSong() == null){
+            if (current.getNextSong() == null){ //Listenende erreicht
                 break;
             }
 
             current = current.getNextSong();
         }
+        /*Neuer Song zeigt auf bisherigen Song und
+        neuer Song wird neuer Kopf der Liste
+         */
         song.setNextSong(firstSong);
         firstSong = song;
         size++;
+
+        //Song erfolgreich hinzugefügt
         return true;
     }
 
 
-//    public boolean containsGenre(Genre genre){}
-//
-//    public void playAll(){}
-//
-//    public void printPlaylist(){}
-//
+    public boolean containsGenre(Genre genre){
+        // avoids null genre
+        if (genre == null){
+            throw new IllegalArgumentException("null genre is not allowed");
+        }
+
+        Song current = firstSong;
+        while(true){ //iteriert bis zum Listenende
+            if (current.getGenre().equals(genre)){
+                return true;
+            }
+
+            if (current.getNextSong() == null){ //Listenende erreicht
+                break;
+            }
+
+            current = current.getNextSong();
+        }
+
+        return false;
+    }
+
+    public void playAll(){
+        Song current = firstSong;
+        while(true){ //iteriert bis zum Listenende
+            current.play();
+
+            if (current.getNextSong() == null){ //Listenende erreicht
+                break;
+            }
+
+            current = current.getNextSong();
+        }
+    }
+
+    public void printPlaylist(){
+        Song current = firstSong;
+        while(true){ //iteriert bis zum Listenende
+            System.out.println(current.toString());
+
+            if (current.getNextSong() == null){ //Listenende erreicht
+                break;
+            }
+
+            current = current.getNextSong();
+        }
+    }
+
 //    public void printPlaylist(Genre genre){}
 //
 //    public int getTotalDuration(){}

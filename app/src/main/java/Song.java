@@ -89,7 +89,7 @@ public class Song {
         return String.format("%d:%02d", minutes, seconds);// "d" für normale Zahlen; "02d" Zahl mit führender Null
     }
 
-    @Override
+    @Override //weil sonst equals() von Object hergenommen wirdSong
     public boolean equals(Object other){
         if (this == other) return true; //Prüft, ob gleiches Objekt im Speicher
         if (!(other instanceof Song)){ return false;} //Prüft ob other kein Song ist oder null ist
